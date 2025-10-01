@@ -1,0 +1,34 @@
+meta {
+  name: Criar um Usuário
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/v1/usuario
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email":"filip3@gmail.com",
+    "senha":"1233456",
+    "nome":"Filipe",
+    "cpf":"123445678901",
+    "telefone":"4899995454",
+    "tipo":"ADMINISTRADOR",
+    "dataNascimento": "2025-07-20",
+    
+  }
+  
+     
+      
+     
+    
+      
+}
+
+settings {
+  encodeUrl: true
+}

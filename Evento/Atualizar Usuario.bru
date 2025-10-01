@@ -1,0 +1,28 @@
+meta {
+  name: Atualizar Usuario
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/v1/evento/722f8f3f-8649-4168-9711-03bfeb625396
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nome": "Tech SENAI",
+    "descricao": "devs start",
+    "tipo": "HACKATON",
+    "local": "SENAI",
+    "data_inicio": "2025-08-28T17:00:00",
+    "data_final": "2025-08-28T18:00:00",
+    "linkEvento": "senai.com",
+    "linkImagem": "image.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
