@@ -2,6 +2,7 @@ package com.senai.eventsmanager.service;
 
 import com.senai.eventsmanager.dto.UsuarioDTO;
 import com.senai.eventsmanager.entity.Usuario;
+import com.senai.eventsmanager.enums.UsuarioEnum;
 import com.senai.eventsmanager.repository.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,15 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     UsuarioRepository repository;
+
+    public List<UsuarioDTO> findByTipo(UsuarioEnum tipo){
+        List<Usuario> usuarios = repository.findByTipo(tipo);
+        List<UsuarioDTO> usuarioDTOs = new ArrayList<>();
+        for(Usuario usuario : usuarios){
+            usuarioDTOs.add(toDto(usuario));
+        }
+        return usuarioDTOs;
+    }
 
     public UsuarioDTO findById(Long id) {
         Usuario usuario = repository.findById(id).orElseThrow();
