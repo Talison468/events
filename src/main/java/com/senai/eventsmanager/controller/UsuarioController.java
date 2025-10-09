@@ -3,6 +3,9 @@ package com.senai.eventsmanager.controller;
 import com.senai.eventsmanager.dto.UsuarioDTO;
 import com.senai.eventsmanager.enums.UsuarioEnum;
 import com.senai.eventsmanager.service.UsuarioService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -30,7 +33,7 @@ public class UsuarioController {
     
     @PostMapping
     public UsuarioDTO save(
-            @RequestBody UsuarioDTO usuarioCreateDTO ){
+            @RequestBody @Valid UsuarioDTO usuarioCreateDTO ){
         return service.save(usuarioCreateDTO);
     }
     

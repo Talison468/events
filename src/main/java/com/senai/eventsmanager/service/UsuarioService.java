@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,16 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public boolean autenticar(String email, String senha){
+        Usuario usuario = repository.findByEmail(email);
+
+        if(usuario != null){
+            String senhaNoBanco = usuario.getSenha();
+
+            return passwordEncoder.matches(senha, senhaNoBanco);
+        }
+        return false;
+    }
     public List<UsuarioDTO> findByTipo(UsuarioEnum tipo) {
         List<Usuario> usuarios = repository.findByTipo(tipo);
         List<UsuarioDTO> usuarioDTOs = new ArrayList<>();
